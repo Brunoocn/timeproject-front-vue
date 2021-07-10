@@ -1,4 +1,4 @@
-# timeprpject
+# timeproject-front-vue
 
 ## Project setup
 ```
