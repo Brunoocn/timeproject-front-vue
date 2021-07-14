@@ -45,6 +45,7 @@
             :disabled="loading"
           ></v-text-field>
         </v-col>
+        <button></button>
 
         <v-btn color="primary" :loading="loading" @click="sendLogin"
           >Login</v-btn
