@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+.form-container{
+    padding: 50px 100px;
+}
+
+
+.form-content{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+.title-singup{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+}
+
+.title-input{
+    text-align: left!important;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+}
+
+.required-input{
+    color: #5138ED;
+}
+
+.col-input {
+    margin: 0 auto;
+}
+
+.bubble-left{
+    position: fixed;
+    bottom: -10%;
+    left: 0;
+}
+
+.bubble-right{
+    position: fixed;
+    top: -10%;
+    right: 0;
+}
