@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 .form-container{
-    padding: 50px 100px;
+    padding: 30px 100px;
 }
 
 
@@ -19,6 +19,8 @@
     font-size: 36px;
     line-height: 42px;
     text-align: center;
+    padding-bottom: 25px;
+    padding-top: 5px;
 }
 
 .title-input{
@@ -40,13 +42,46 @@
 }
 
 .bubble-left{
-    position: fixed;
+    position: absolute;
     bottom: -10%;
     left: 0;
 }
 
 .bubble-right{
-    position: fixed;
+    position: absolute;
     top: -10%;
     right: 0;
+}
+
+.btn-register{
+    width: 100%;
+    max-width: 200px;
+    color: #fff;
+    background-color: #7D6AF2;
+    border-radius: 40px;
+    padding: 25px!important;
+    margin-top: 20px;
+}
+
+.subtext{
+margin-top: 10px;
+font-family: Roboto;
+font-style: normal;
+font-weight: 900;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+margin-bottom: 0!important;
+}
+
+.sing-in{
+    color: #7D6AF2;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }

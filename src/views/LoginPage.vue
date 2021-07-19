@@ -1,62 +1,87 @@
 <template>
-  <div>
-    <v-expand-transition>
-      <v-alert
-        border="top"
-        color="red lighten-2"
-        dark
-        v-if="errors.length > 0"
-        dismissible
-        @input="alertInput"
-      >
-        <div v-for="(error, index) in errors" :key="index" class="text-center">
-          {{ error.value }}
-        </div>
-      </v-alert>
-    </v-expand-transition>
-    <v-form>
-      <v-container>
-        <v-col cols="12" md="4">
-          <v-text-field
-            v-model="model.tenanty"
-            :counter="10"
-            label="Conta"
-            required
-            :disabled="loading"
-          ></v-text-field>
-        </v-col>
-
-        <v-col cols="12" md="4">
-          <v-text-field
-            v-model="model.email"
-            :counter="10"
-            label="Email"
-            required
-            :disabled="loading"
-          ></v-text-field>
-        </v-col>
-
-        <v-col cols="12" md="4">
-          <v-text-field
-            v-model="model.password"
-            label="Senha"
-            type="password"
-            required
-            :disabled="loading"
-          ></v-text-field>
-        </v-col>
-        <button></button>
-
-        <v-btn color="primary" :loading="loading" @click="sendLogin"
-          >Login</v-btn
+  <section class="form-container">
+    <img src="/Logo.svg" alt="logo" class="logo" />
+    <img src="/bubble.svg" alt="bubble" class="bubble-left" />
+    <img src="/bubble-right.svg" alt="bubble" class="bubble-right" />
+    <div class="form-content">
+      <v-expand-transition>
+        <v-alert
+          border="top"
+          color="red lighten-2"
+          dark
+          v-if="errors.length > 0"
+          dismissible
+          @input="alertInput"
         >
-      </v-container>
-    </v-form>
-  </div>
+          <div
+            v-for="(error, index) in errors"
+            :key="index"
+            class="text-center"
+          >
+            {{ error.value }}
+          </div>
+        </v-alert>
+      </v-expand-transition>
+      <h1 class="title-singin">SingIn</h1>
+      <v-form>
+        <v-container>
+          <v-col cols="12" md="4" class="col-input">
+            <h2 class="title-input">
+              Account<span class="required-input">*</span>
+            </h2>
+            <v-text-field
+              v-model="model.tenanty"
+              label="Your account"
+              required
+              :disabled="loading"
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="12" md="4" class="col-input">
+            <h2 class="title-input">
+              Email<span class="required-input">*</span>
+            </h2>
+            <v-text-field
+              v-model="model.email"
+              label="Your email"
+              required
+              :disabled="loading"
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="12" md="4" class="col-input">
+            <h2 class="title-input">
+              Password<span class="required-input">*</span>
+            </h2>
+            <v-text-field
+              v-model="model.password"
+              label="Your password"
+              type="password"
+              required
+              :disabled="loading"
+            ></v-text-field>
+          </v-col>
+
+          <v-btn
+            class="btn-login"
+            :loading="loading"
+            @click="sendLogin"
+            :disabled="loading"
+            >Login</v-btn
+          >
+          <p class="subtext">
+            Don't have a account? <br />
+            <span class="sing-in">Sing Up</span>
+          </p>
+        </v-container>
+      </v-form>
+    </div>
+  </section>
 </template>
 
 <script>
 import authService from "../services/authService";
+import "../styles/loginPage.css";
 
 export default {
   data() {
@@ -98,12 +123,3 @@ export default {
 };
 </script>
 
-<style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-</style>
