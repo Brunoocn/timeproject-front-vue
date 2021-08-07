@@ -62,7 +62,7 @@ export default {
         {
           icon: "mdi-pencil",
           color: "warning",
-          heandle: this.editItem,
+          handle: this.editItem,
         },
         { icon: "mdi-delete", color: "error", heandle: this.editItem },
       ],
@@ -76,16 +76,6 @@ export default {
         total: 0,
       },
     };
-  },
-
-  computed: {
-
-    pagesLengthComp() {
-      let limit = this.pagination.limit;
-      let total = this.pagination.total;
-      let length = Math.ceil(total / limit);
-      return length < 1 ? 1 : length;
-    },
   },
 
   methods: {
