@@ -19,13 +19,13 @@
 
     <app-dialog
       v-model="form.dialog"
-      title="Costumer"
+      title="Customer"
       @confirm="confirmDialog"
       @cancel="cancelDialog"
     >
       <template slot="content">
-        <costumer-form v-if="itemSelected" ref="form" v-model="itemSelected">
-        </costumer-form>
+        <customer-form v-if="itemSelected" ref="form" v-model="itemSelected">
+        </customer-form>
       </template>
     </app-dialog>
   </div>
@@ -33,9 +33,9 @@
 
 <script>
 import CustomerService from "../services/customerService";
-import CostumerForm from "../forms/costumers/CostumerForm.vue";
+import CustomerForm from "../forms/customers/CustomerForm.vue";
 export default {
-  components: { CostumerForm },
+  components: { CustomerForm },
   data() {
     return {
       headers: [

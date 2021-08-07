@@ -5,7 +5,7 @@
       <v-app-bar-title>Time Project</v-app-bar-title>
       <v-spacer />
       <v-toolbar-items>
-        <v-btn text to="/customers">Costumers</v-btn>
+        <v-btn text to="/customers">Customers</v-btn>
       </v-toolbar-items>
     </v-app-bar>
 
