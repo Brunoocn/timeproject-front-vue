@@ -6,6 +6,7 @@ export default {
     async signIn(tenanty, email, password){
         try{
             const res = await apiClient.post("/user/token", {tenanty, email, password});
+    
             if (res.statusText == "OK") {
                 await this.setUserParams(res.data.data)
             } 
