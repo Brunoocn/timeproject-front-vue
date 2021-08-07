@@ -69,9 +69,12 @@
             :disabled="loading"
             >Login</v-btn
           >
+
           <p class="subtext">
             Don't have a account? <br />
-            <span class="sing-in">Sing Up</span>
+            <router-link to="register">
+              <span class="sing-in">Sing Up</span>
+            </router-link>
           </p>
         </v-container>
       </v-form>
@@ -104,10 +107,14 @@ export default {
         this.model.email,
         this.model.password
       );
+      console.log(res)
       this.loading = false;
       if (res.success === false) {
         this.errors = res.data;
+        return;
       }
+
+      this.$router.push({name:'Main'})
     },
     async teste() {
       const res = await this.$http.get("User/teste-auth");

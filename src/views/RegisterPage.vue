@@ -89,9 +89,12 @@
           <v-btn class="btn-register" color="primary" @click="sendRegister"
             >Sing up</v-btn
           >
+
           <p class="subtext">
             Already have a account? <br />
-            <span class="sing-in">Sing In</span>
+            <router-link to="/">
+              <span class="sing-in">Sing In</span>
+            </router-link>
           </p>
         </v-container>
       </v-form>
