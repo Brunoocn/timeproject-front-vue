@@ -6,6 +6,7 @@
       <v-spacer />
       <v-toolbar-items>
         <v-btn text to="/customers">Customers</v-btn>
+        <v-btn text to="/activity">Activity</v-btn>
       </v-toolbar-items>
     </v-app-bar>
 
