@@ -64,7 +64,7 @@ export default {
           color: "warning",
           handle: this.editItem,
         },
-        { icon: "mdi-delete", color: "error", heandle: this.editItem },
+        { icon: "mdi-delete", color: "error", handle: this.deleteItem },
       ],
       itemSelected: null,
       items: [],
@@ -92,6 +92,14 @@ export default {
       this.itemSelected = assignItem;
       this.form.dialog = true;
     },
+
+    async deleteItem(item){
+    const res = await CustomerService.delete(item.id);
+    if(res.data.success){
+    await this.getItems();
+    }
+    },
+
     clickRow(row) {
       this.itemSelected = row;
     },

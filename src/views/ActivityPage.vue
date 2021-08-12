@@ -30,7 +30,7 @@
 
 <script>
 import AppTitle from "../components/texts/AppTitle.vue";
-import CustomerService from "../services/activityService";
+import ActivityService from "../services/activityService";
 import AppTable from "../components/tables/AppTable.vue";
 import AppDialog from "../components/dialogs/AppDialog.vue";
 import ActivityForm from "../forms/activitys/ActivityForm.vue";
@@ -77,7 +77,7 @@ export default {
           color: "warning",
           handle: this.editItem,
         },
-        { icon: "mdi-delete", color: "error", heandle: this.editItem },
+        { icon: "mdi-delete", color: "error", handle: this.deleteItem },
       ],
       itemSelected: null,
       items: [],
@@ -105,6 +105,12 @@ export default {
       this.itemSelected = assignItem;
       this.form.dialog = true;
     },
+    async deleteItem(item){
+    const res = await ActivityService.delete(item.id);
+    if(res.data.success){
+    await this.getItems();
+    }
+    },
     clickRow(row) {
       this.itemSelected = row;
     },
@@ -119,8 +125,8 @@ export default {
       if (!this.$refs.form.validate()) return;
 
       const res = this.itemSelected.id
-        ? await CustomerService.update(this.itemSelected)
-        : await CustomerService.insert(this.itemSelected);
+        ? await ActivityService.update(this.itemSelected)
+        : await ActivityService.insert(this.itemSelected);
       if (res.data.success) {
         this.cancelDialog();
         await this.getItems();
@@ -130,7 +136,7 @@ export default {
       this.errors = res.data.data;
     },
     async getItems() {
-      const res = await CustomerService.getAll(
+      const res = await ActivityService.getAll(
         this.pagination.page,
         this.pagination.limit
       );
