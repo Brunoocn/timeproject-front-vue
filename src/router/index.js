@@ -4,6 +4,7 @@ import LoginPage from '../views/LoginPage.vue'
 import RegisterPage from '../views/RegisterPage.vue'
 import Home from '../views/HomePage.vue'
 import CustomerPage from '../views/CustomerPage.vue'
+import ActivityPage from '../views/ActivityPage.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
         name: 'Customers',
         component: CustomerPage
       },
+      {
+        path: '/activity',
+        name:'Activity',
+        component: ActivityPage
+      }
     ]
   },
 ]

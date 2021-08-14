@@ -1,7 +1,6 @@
 <template>
   <div>
-    <app-title>Customers</app-title>
-
+    <app-title>Activity</app-title>
     <v-btn @click="newItem" class="mb-5" icon large color="primary">
       <v-icon>mdi-plus</v-icon>
     </v-btn>
@@ -14,37 +13,33 @@
       :limit="pagination.limit"
       :total="pagination.total"
       @change-page="changePage"
-    >
-    </app-table>
-
+    />
     <app-dialog
       v-model="form.dialog"
-      title="Customer"
+      title="Activity"
       @confirm="confirmDialog"
       @cancel="cancelDialog"
     >
       <template slot="content">
-        <customer-form v-if="itemSelected" ref="form" v-model="itemSelected">
-        </customer-form>
+        <activity-form v-if="itemSelected" ref="form" v-model="itemSelected" />
       </template>
     </app-dialog>
+
   </div>
 </template>
 
 <script>
-import CustomerService from "../services/customerService";
-import CustomerForm from "../forms/customers/CustomerForm.vue";
+import AppTitle from "../components/texts/AppTitle.vue";
+import ActivityService from "../services/activityService";
+import AppTable from "../components/tables/AppTable.vue";
+import AppDialog from "../components/dialogs/AppDialog.vue";
+import ActivityForm from "../forms/activitys/ActivityForm.vue";
 export default {
-  components: { CustomerForm },
+  components: { AppTitle, AppTable, AppDialog, ActivityForm },
   data() {
     return {
+      inputText: "Bruno",
       headers: [
-        {
-          text: "Code",
-          align: "start",
-          sortable: false,
-          value: "code",
-        },
         {
           text: "Name",
           align: "start",
@@ -52,11 +47,29 @@ export default {
           value: "name",
         },
         {
-          text: "Company Name",
+          text: "Project",
           align: "start",
           sortable: false,
-          value: "companyName",
+          value: "project",
         },
+        {
+          text: "Description",
+          align: "start",
+          sortable: false,
+          value: "description",
+        },
+        {
+          text:"Color",
+          align:"start",
+          sortable:false,
+          value:"description",
+        },
+        {
+          text:"Budget",
+          align:"start",
+          sortable:false,
+          value:"budget",
+        }
       ],
       actions: [
         {
@@ -92,14 +105,12 @@ export default {
       this.itemSelected = assignItem;
       this.form.dialog = true;
     },
-
     async deleteItem(item){
-    const res = await CustomerService.delete(item.id);
+    const res = await ActivityService.delete(item.id);
     if(res.data.success){
     await this.getItems();
     }
     },
-
     clickRow(row) {
       this.itemSelected = row;
     },
@@ -114,8 +125,8 @@ export default {
       if (!this.$refs.form.validate()) return;
 
       const res = this.itemSelected.id
-        ? await CustomerService.update(this.itemSelected)
-        : await CustomerService.insert(this.itemSelected);
+        ? await ActivityService.update(this.itemSelected)
+        : await ActivityService.insert(this.itemSelected);
       if (res.data.success) {
         this.cancelDialog();
         await this.getItems();
@@ -125,12 +136,12 @@ export default {
       this.errors = res.data.data;
     },
     async getItems() {
-      const res = await CustomerService.getAll(
+      const res = await ActivityService.getAll(
         this.pagination.page,
         this.pagination.limit
       );
 
-      if (res.statusText == "OK") {
+      if (res.status == 200) {
         this.items = res.data.data.data;
         this.pagination.total = res.data.data.total;
       }
