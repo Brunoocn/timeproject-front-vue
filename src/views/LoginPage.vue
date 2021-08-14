@@ -107,14 +107,8 @@ export default {
         this.model.email,
         this.model.password
       );
-      console.log(res)
       this.loading = false;
-      if (res.success === false) {
-        this.errors = res.data;
-        return;
-      }
-
-      this.$router.push({name:'Main'})
+      if (res) this.$router.push({ name: "Main" });
     },
     async teste() {
       const res = await this.$http.get("User/teste-auth");

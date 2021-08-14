@@ -2,6 +2,7 @@ import apiClient from "../api/apiClient";
 
 class EntityService {
   route;
+
   constructor(route) {
     this.route = route;
   }

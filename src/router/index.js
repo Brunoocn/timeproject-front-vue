@@ -5,6 +5,7 @@ import RegisterPage from '../views/RegisterPage.vue'
 import Home from '../views/HomePage.vue'
 import CustomerPage from '../views/CustomerPage.vue'
 import ActivityPage from '../views/ActivityPage.vue'
+import TeamPage from '../views/TeamPage.vue'
 
 Vue.use(VueRouter)
 
@@ -38,6 +39,11 @@ const routes = [
         path: '/activity',
         name:'Activity',
         component: ActivityPage
+      },
+      {
+        path: '/teams',
+        name:'Teams',
+        component: TeamPage
       }
     ]
   },
