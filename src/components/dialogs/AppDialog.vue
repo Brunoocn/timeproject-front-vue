@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" width="500" @input="$emit('input', dialog)">
+  <v-dialog v-model="dialog" hide-overlay persistent width="500" @input="$emit('input', dialog)">
     <v-card>
       <v-toolbar dark color="primary" class="mb-5 text-h5 elevation-0">
         {{ title }}

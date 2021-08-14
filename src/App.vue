@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <app-alert></app-alert>
     <v-overlay v-model="this.$store.state.loading">
       <v-progress-circular
         :size="50"
@@ -22,9 +23,8 @@ export default {
     //
   }),
 
-  async mounted(){
-    const res = await this.$confirm("teste","mensagem")
-    console.log(res)
+   mounted(){
+
   }
 };
 </script>

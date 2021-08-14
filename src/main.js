@@ -9,6 +9,7 @@ import AppDialog from "./components/dialogs/AppDialog.vue";
 import AppTable from "./components/tables/AppTable.vue";
 import AppTitle from "./components/texts/AppTitle.vue";
 import AppDialogConfirm from "./components/dialogs/AppDialogConfirm.vue";
+import AppAlert from "./components/alerts/AppAlert.vue";
 
 import Vuex from "vuex";
 Vue.use(Vuex);
@@ -22,8 +23,14 @@ Vue.prototype.$http = apiClient;
 Vue.component("app-dialog", AppDialog);
 Vue.component("app-table", AppTable);
 Vue.component("app-title", AppTitle);
+Vue.component("app-alert", AppAlert);
 
-Vue.prototype.$confirm =  (title, message) => {
+Vue.prototype.$notify = (type, alerts) => {
+  if (!type || !alerts)  { store.dispatch("notify", null); return;}
+  store.dispatch("notify", { type, alerts });
+};
+
+Vue.prototype.$confirm = (title, message) => {
   var vueContainer = new Vue({
     vuetify,
     render: (h) => h(AppDialogConfirm),

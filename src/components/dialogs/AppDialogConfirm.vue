@@ -1,11 +1,11 @@
 <template>
-  <v-dialog v-model="open" max-width="200">
+  <v-dialog v-model="open" hide-overlay persistent max-width="200">
     <v-card>
       <v-toolbar color="primary" dark>
         <v-toolbar-title>{{ title }}</v-toolbar-title>
         <v-spacer />
         <v-toolbar-items>
-          <v-btn icon dark>
+          <v-btn icon dark @click="cancel">
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </v-toolbar-items>
