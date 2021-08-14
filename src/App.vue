@@ -22,8 +22,9 @@ export default {
     //
   }),
 
-  mounted(){
-
+  async mounted(){
+    const res = await this.$confirm("teste","mensagem")
+    console.log(res)
   }
 };
 </script>
