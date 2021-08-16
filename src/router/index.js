@@ -6,6 +6,7 @@ import Home from '../views/HomePage.vue'
 import CustomerPage from '../views/CustomerPage.vue'
 import ActivityPage from '../views/ActivityPage.vue'
 import TeamPage from '../views/TeamPage.vue'
+import ProjectPage from '../views/ProjectPage.vue'
 
 Vue.use(VueRouter)
 
@@ -44,6 +45,11 @@ const routes = [
         path: '/teams',
         name:'Teams',
         component: TeamPage
+      },
+      {
+        path:'/projects',
+        name:'Projects',
+        component: ProjectPage
       }
     ]
   },

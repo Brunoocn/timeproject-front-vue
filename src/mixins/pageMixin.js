@@ -62,6 +62,7 @@ export default {
         this.cancelDialog();
         await this.getItems();
         return;
+
       }
 
       this.errors = res.data.data;
