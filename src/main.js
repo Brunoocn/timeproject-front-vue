@@ -10,6 +10,7 @@ import AppTable from "./components/tables/AppTable.vue";
 import AppTitle from "./components/texts/AppTitle.vue";
 import AppDialogConfirm from "./components/dialogs/AppDialogConfirm.vue";
 import AppAlert from "./components/alerts/AppAlert.vue";
+import DateInput from "./components/dates/DateInput.vue";
 
 import Vuex from "vuex";
 Vue.use(Vuex);
@@ -24,6 +25,8 @@ Vue.component("app-dialog", AppDialog);
 Vue.component("app-table", AppTable);
 Vue.component("app-title", AppTitle);
 Vue.component("app-alert", AppAlert);
+Vue.component("date-input", DateInput);
+
 
 Vue.prototype.$notify = (type, alerts) => {
   if (!type || !alerts)  { store.dispatch("notify", null); return;}
