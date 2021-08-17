@@ -1,6 +1,6 @@
 <template>
   <section class="form-container">
-    <img src="/Logo.svg" alt="logo" class="logo" />
+    <img src="/Logo.svg" />
     <img src="/bubble.svg" alt="bubble" class="bubble-left" />
     <img src="/bubble-right.svg" alt="bubble" class="bubble-right" />
     <div class="form-content">

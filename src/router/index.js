@@ -7,6 +7,7 @@ import CustomerPage from '../views/CustomerPage.vue'
 import ActivityPage from '../views/ActivityPage.vue'
 import TeamPage from '../views/TeamPage.vue'
 import ProjectPage from '../views/ProjectPage.vue'
+import NotFound from '../views/NotFound.vue'
 
 Vue.use(VueRouter)
 
@@ -53,6 +54,11 @@ const routes = [
       }
     ]
   },
+  {
+    path:'*',
+    name:'NotFound',
+    component: NotFound
+  }
 ]
 
 const router = new VueRouter({
