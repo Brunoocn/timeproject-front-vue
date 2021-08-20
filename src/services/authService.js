@@ -19,8 +19,14 @@ export default {
     return await Vue.prototype.$getItem("userparams");
   },
 
+  async setRoles(claims){
+    const claimsRoles = claims.filter(claim => claim.type == 'rule').map(claim => {return claim.value});
+    await Vue.prototype.$gates.setRoles(claimsRoles)
+  },
+
   async setUserParams(params) {
     await Vue.prototype.$setItem("userparams", params);
+    await this.setRoles(params.claims)
   },
 
   async signUp(tenanty, email, name, password, confirmPassword) {
