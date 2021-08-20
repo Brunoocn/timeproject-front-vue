@@ -8,6 +8,7 @@ import ActivityPage from "../views/ActivityPage.vue";
 import TeamPage from "../views/TeamPage.vue";
 import ProjectPage from "../views/ProjectPage.vue";
 import NotFound from "../views/NotFound.vue";
+import UserPage from "../views/UserPage.vue";
 
 Vue.use(VueRouter);
 
@@ -60,6 +61,14 @@ const routes = [
         path: "/projects",
         name: "Projects",
         component: ProjectPage,
+        meta: {
+          role: "Master|Admin",
+        },
+      },
+      {
+        path: "/users",
+        name: "Users",
+        component: UserPage,
         meta: {
           role: "Master|Admin",
         },

@@ -39,6 +39,10 @@ export default {
       this.itemSelected = assignItem;
       this.form.dialog = true;
     },
+    selectItem(item){
+      let assignItem = Object.assign({}, item);
+      this.itemSelected = assignItem;
+    },
     async deleteItem(item) {
       const res = await this.entityService.delete(item.id);
       if (res.data.success) {
