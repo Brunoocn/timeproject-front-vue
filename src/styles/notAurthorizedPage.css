@@ -1,0 +1,41 @@
+.col-image{
+    background-image: linear-gradient(to right, #8c56db, #8a5adf, #875ee4, #8461e8, #8165ec, #7c67ec, #7868ed, #736aed, #6c6ae9, #6469e4, #5d69e0, #5668db);
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+}
+
+.container-image{
+    margin-top: 150px;
+}
+
+.text-container{
+    margin-top: 250px;
+    text-align: center;
+}
+
+.title-notauthorized{
+    font-family: Roboto; 
+    font-style: normal;
+    font-weight: 900;
+    font-size: 42px;
+    line-height: 42px;
+    text-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+}
+
+.button-return{
+    margin-top: 20px;
+    width: 100%;
+    max-width: 200px;
+    color: #fff!important;
+    background-color: #7D6AF2!important;
+    border-radius: 40px!important;
+    padding: 10px!important;
+    transition: transform 0.2s;
+    font-weight: bold;
+}
+
+.button-return:hover{
+transform: scale(0.99);
+}

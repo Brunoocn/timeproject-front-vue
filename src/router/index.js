@@ -9,6 +9,7 @@ import TeamPage from "../views/TeamPage.vue";
 import ProjectPage from "../views/ProjectPage.vue";
 import NotFound from "../views/NotFound.vue";
 import UserPage from "../views/UserPage.vue";
+import NotAuthorizedPage from "../views/NotAuthorizedPage.vue";
 
 Vue.use(VueRouter);
 
@@ -80,6 +81,11 @@ const routes = [
     name: "NotFound",
     component: NotFound,
   },
+  {
+    path: "/notauthorized",
+    name: "NotAuthorized",
+    component: NotAuthorizedPage,
+  }
 ];
 
 const router = new VueRouter({
@@ -92,7 +98,7 @@ router.beforeEach(async (to, from, next) => {
   if (to.meta && to.meta.role) {
     const role = to.meta.role;
     const allow = Vue.prototype.$gates.hasAnyRole(role);
-    if (!allow) next({ name: "NotFound" });
+    if (!allow) next({ name: "NotAuthorized" });
     else next();
   } else {
     next();
