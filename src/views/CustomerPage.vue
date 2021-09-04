@@ -34,10 +34,14 @@
 <script>
 import CustomerService from "../services/customerService";
 import CustomerForm from "../forms/customers/CustomerForm.vue";
+import PageMixin from "../mixins/pageMixin";
 export default {
   components: { CustomerForm },
+  mixins: [PageMixin],
   data() {
     return {
+      title: "Customer",
+      entityService: CustomerService,
       headers: [
         {
           text: "Code",
@@ -58,89 +62,7 @@ export default {
           value: "companyName",
         },
       ],
-      actions: [
-        {
-          icon: "mdi-pencil",
-          color: "warning",
-          handle: this.editItem,
-        },
-        { icon: "mdi-delete", color: "error", handle: this.deleteItem },
-      ],
-      itemSelected: null,
-      items: [],
-      form: { dialog: false },
-      errors: [],
-      pagination: {
-        page: 1,
-        limit: 30,
-        total: 0,
-      },
     };
-  },
-
-  methods: {
-    async changePage(page) {
-      this.pagination.page = page;
-      await this.getItems();
-    },
-    newItem() {
-      this.itemSelected = {};
-      this.form.dialog = true;
-    },
-    editItem(item) {
-      let assignItem = Object.assign({}, item);
-      this.itemSelected = assignItem;
-      this.form.dialog = true;
-    },
-
-    async deleteItem(item){
-    const res = await CustomerService.delete(item.id);
-    if(res.data.success){
-    await this.getItems();
-    }
-    },
-
-    clickRow(row) {
-      this.itemSelected = row;
-    },
-    cancelDialog() {
-      this.itemSelected = null;
-      this.form.dialog = false;
-    },
-    async confirmDialog() {
-      await this.saveItem(this.itemSelected);
-    },
-    async saveItem() {
-      if (!this.$refs.form.validate()) return;
-
-      const res = this.itemSelected.id
-        ? await CustomerService.update(this.itemSelected)
-        : await CustomerService.insert(this.itemSelected);
-      if (res.data.success) {
-        this.cancelDialog();
-        await this.getItems();
-        return;
-      }
-
-      this.errors = res.data.data;
-    },
-    async getItems() {
-      const res = await CustomerService.getAll(
-        this.pagination.page,
-        this.pagination.limit
-      );
-
-      if (res.statusText == "OK") {
-        this.items = res.data.data.data;
-        this.pagination.total = res.data.data.total;
-      }
-    },
-  },
-  async mounted() {
-    await this.getItems();
   },
 };
 </script>
-
-<style>
-</style>

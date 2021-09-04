@@ -2,8 +2,17 @@ import axios from "axios";
 import authService from "../services/authService";
 import store from "../stores/store";
 import Vue from "vue";
+import router from "../router/index";
 
-const client = axios.create({ baseURL: process.env.VUE_APP_API_URL });
+const client = axios.create({
+  baseURL: process.env.VUE_APP_API_URL,
+  validateStatus: function(number) {
+    if (number === 403) {
+      router.push({ name: "NotAuthorized" });
+    }
+    return number;
+  },
+});
 
 client.interceptors.request.use(async (request) => {
   store.dispatch("loading", true);

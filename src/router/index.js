@@ -85,7 +85,7 @@ const routes = [
     path: "/notauthorized",
     name: "NotAuthorized",
     component: NotAuthorizedPage,
-  }
+  },
 ];
 
 const router = new VueRouter({

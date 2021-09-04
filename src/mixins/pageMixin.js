@@ -1,4 +1,3 @@
-
 export default {
   data() {
     return {
@@ -39,7 +38,7 @@ export default {
       this.itemSelected = assignItem;
       this.form.dialog = true;
     },
-    selectItem(item){
+    selectItem(item) {
       let assignItem = Object.assign({}, item);
       this.itemSelected = assignItem;
     },
@@ -66,7 +65,6 @@ export default {
         this.cancelDialog();
         await this.getItems();
         return;
-
       }
 
       this.errors = res.data.data;
