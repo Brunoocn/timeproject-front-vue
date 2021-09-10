@@ -6,12 +6,22 @@
       class="elevation-1"
       hide-default-footer
     >
+      <template
+        v-for="header in headers"
+        :slot="`item.${header.value}`"
+        slot-scope="data"
+      >
+        <slot :name="header.value" :item="data.item">
+          {{ data.item[header.value] }}
+        </slot>
+      </template>
+
       <template slot="item.actions" slot-scope="data">
         <v-card-actions>
-          <v-spacer/>
+          <v-spacer />
           <div class="text-end" v-for="(action, index) in actions" :key="index">
             <v-btn :color="action.color" icon @click="action.handle(data.item)"
-              ><v-icon>{{action.icon}}</v-icon></v-btn
+              ><v-icon>{{ action.icon }}</v-icon></v-btn
             >
           </div>
         </v-card-actions>

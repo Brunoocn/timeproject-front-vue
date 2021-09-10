@@ -1,13 +1,23 @@
 <template>
-  <v-dialog v-model="dialog" hide-overlay persistent width="500" @input="$emit('input', dialog)">
+  <v-dialog
+    v-model="dialog"
+    hide-overlay
+    persistent
+    width="500"
+    @input="$emit('input', dialog)"
+  >
     <v-card>
-      <v-toolbar dark color="primary" class="mb-5 text-h5 elevation-0">
+      <v-toolbar dark color="primary" class="mb-0 text-h5 elevation-0">
         {{ title }}
       </v-toolbar>
 
-      <v-card-text>
+      <v-card-text v-if="!noPadding && noPadding != ''">
         <slot name="content"></slot>
       </v-card-text>
+
+      <div v-else>
+        <slot name="content"></slot>
+      </div>
 
       <v-divider></v-divider>
 
@@ -22,7 +32,7 @@
 
 <script>
 export default {
-  props: ["value", "title"],
+  props: ["value", "title", "noPadding"],
   data() {
     return { dialog: false };
   },

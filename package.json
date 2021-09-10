@@ -12,11 +12,13 @@
     "core-js": "^3.6.5",
     "moment": "^2.29.1",
     "register-service-worker": "^1.7.1",
+    "v-mask": "^2.2.4",
     "vue": "^2.6.11",
     "vue-gates": "^2.1.2",
     "vue-localforage": "^0.2.5",
     "vue-router": "^3.2.0",
     "vuetify": "^2.4.0",
+    "vuetify-datetime-picker": "^2.1.1",
     "vuex": "^3.6.2"
   },
   "devDependencies": {

@@ -22,14 +22,14 @@
       </div>
 
       <div class="text-h5">Customers in Team</div>
-      <div v-for="(customer, index) in options.customersOptions" :key="index">
+      <div v-for="customer in options.customersOptions" :key="customer.key">
         <v-checkbox
           :label="customer.value"
           v-model="customer.select"
         ></v-checkbox>
       </div>
       <div class="text-h5">Projects in Team</div>
-      <div v-for="(project, index) in options.projectsOptions" :key="index">
+      <div v-for="project in options.projectsOptions" :key="project.key">
         <v-checkbox
           :label="project.value"
           v-model="project.select"

@@ -7,6 +7,7 @@ import CustomerPage from "../views/CustomerPage.vue";
 import ActivityPage from "../views/ActivityPage.vue";
 import TeamPage from "../views/TeamPage.vue";
 import ProjectPage from "../views/ProjectPage.vue";
+import TimeSheetPage from "../views/TimeSheetPage.vue";
 import NotFound from "../views/NotFound.vue";
 import UserPage from "../views/UserPage.vue";
 import NotAuthorizedPage from "../views/NotAuthorizedPage.vue";
@@ -34,6 +35,14 @@ const routes = [
     name: "Main",
     component: Home,
     children: [
+      {
+        path: "/timesheet",
+        name: "TimeSheet",
+        component: TimeSheetPage,
+        meta: {
+          role: "Master|Admin|Colaborator",
+        },
+      },
       {
         path: "/customers",
         name: "Customers",

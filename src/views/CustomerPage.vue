@@ -22,6 +22,7 @@
       title="Customer"
       @confirm="confirmDialog"
       @cancel="cancelDialog"
+      no-padding
     >
       <template slot="content">
         <customer-form v-if="itemSelected" ref="form" v-model="itemSelected">

@@ -16,6 +16,14 @@ import DateInput from "./components/dates/DateInput.vue";
 import Vuex from "vuex";
 Vue.use(Vuex);
 
+import VueMask from 'v-mask'
+Vue.use(VueMask);
+
+import DatetimePicker from 'vuetify-datetime-picker'
+// (Optional) import 'vuetify-datetime-picker/src/stylus/main.styl'
+ 
+Vue.use(DatetimePicker)
+
 Vue.config.productionTip = false;
 import VueLocalForage from "vue-localforage";
 Vue.use(VueLocalForage);
@@ -27,7 +35,6 @@ Vue.component("app-table", AppTable);
 Vue.component("app-title", AppTitle);
 Vue.component("app-alert", AppAlert);
 Vue.component("date-input", DateInput);
-
 
 Vue.prototype.$notify = (type, alerts) => {
   if (!type || !alerts)  { store.dispatch("notify", null); return;}

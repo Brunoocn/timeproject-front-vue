@@ -2,9 +2,11 @@ import apiClient from "../api/apiClient";
 
 class EntityService {
   route;
+  client;
 
   constructor(route) {
     this.route = route;
+    this.client = apiClient;
   }
 
   async getAll(page, limit, sortBy, sortDesc) {

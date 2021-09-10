@@ -5,6 +5,9 @@
       <v-app-bar-title>Time Project</v-app-bar-title>
       <v-spacer />
       <v-toolbar-items>
+        <v-btn v-role:any="'Master|Admin|Colaborator'" text to="/timesheet"
+          >Time Sheet</v-btn
+        >
         <v-btn v-role:any="'Master|Admin'" text to="/customers"
           >Customers</v-btn
         >
