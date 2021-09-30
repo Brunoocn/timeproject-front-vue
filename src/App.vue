@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import "./styles/globals.css"
 export default {
   name: "App",
 

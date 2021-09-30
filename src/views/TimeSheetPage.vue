@@ -1,36 +1,38 @@
 <template>
   <div>
-    <app-title>TimeSheets</app-title>
+    <div class="page-container">
+      <div class="page-content">
+        <v-btn @click="newItem" class="mb-5" icon large color="primary">
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
 
-    <v-btn @click="newItem" class="mb-5" icon large color="primary">
-      <v-icon>mdi-plus</v-icon>
-    </v-btn>
-
-    <app-table
-      :items="items"
-      :headers="headers"
-      :actions="actions"
-      :page="pagination.page"
-      :limit="pagination.limit"
-      :total="pagination.total"
-      @change-page="changePage"
-    >
-      <template slot="startDate" slot-scope="data">
-        {{ data.item.startDate | dateTimeFilter}}</template
-      >
-      <template slot="endDate" slot-scope="data">
-        {{ data.item.endDate | dateTimeFilter }}</template
-      >
-      <template slot="projectId" slot-scope="data">
-        {{ getProjectNameByProjectId(data.item.projectId) }}</template
-      >
-      <template slot="customerId" slot-scope="data">
-        {{ getCustomerNameByCustomerId(data.item.customerId) }}</template
-      >
-      <template slot="activityId" slot-scope="data">
-        {{ getActivityNameByActivityId(data.item.activityId) }}</template
-      >
-    </app-table>
+        <app-table
+          :items="items"
+          :headers="headers"
+          :actions="actions"
+          :page="pagination.page"
+          :limit="pagination.limit"
+          :total="pagination.total"
+          @change-page="changePage"
+        >
+          <template slot="startDate" slot-scope="data">
+            {{ data.item.startDate | dateTimeFilter }}</template
+          >
+          <template slot="endDate" slot-scope="data">
+            {{ data.item.endDate | dateTimeFilter }}</template
+          >
+          <template slot="projectId" slot-scope="data">
+            {{ getProjectNameByProjectId(data.item.projectId) }}</template
+          >
+          <template slot="customerId" slot-scope="data">
+            {{ getCustomerNameByCustomerId(data.item.customerId) }}</template
+          >
+          <template slot="activityId" slot-scope="data">
+            {{ getActivityNameByActivityId(data.item.activityId) }}</template
+          >
+        </app-table>
+      </div>
+    </div>
 
     <app-dialog
       v-model="form.dialog"
@@ -119,8 +121,8 @@ export default {
     };
   },
   filters: {
-     dateTimeFilter(value) {
-       if(!value) return null;
+    dateTimeFilter(value) {
+      if (!value) return null;
       return moment(value).format("DD/MM/yyyy hh:mm");
     },
   },

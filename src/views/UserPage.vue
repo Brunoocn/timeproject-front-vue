@@ -1,6 +1,10 @@
 <template>
   <div>
-    <app-title>{{ title }}</app-title>
+    <div class="page-container">
+      <div class="page-content">
+
+      </div>
+    </div>
     <v-btn @click="newItem" class="mb-5" icon large color="primary">
       <v-icon>mdi-plus</v-icon>
     </v-btn>
@@ -29,13 +33,12 @@
 
 <script>
 import pageMixin from "../mixins/pageMixin";
-import AppTitle from "../components/texts/AppTitle.vue";
 import UserService from "../services/userService";
 import AppTable from "../components/tables/AppTable.vue";
 import AppDialog from "../components/dialogs/AppDialog.vue";
 import UserRulesForm from "../forms/users/UserRulesForm.vue";
 export default {
-  components: { AppTitle, AppTable, AppDialog, UserRulesForm },
+  components: { AppTable, AppDialog, UserRulesForm },
   mixins: [pageMixin],
   data() {
     return {

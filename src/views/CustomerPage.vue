@@ -1,34 +1,40 @@
 <template>
   <div>
-    <app-title>Customers</app-title>
+    <div class="page-container">
+      <div class="page-content">
+        <v-btn @click="newItem" class="mb-5" icon large color="primary">
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
 
-    <v-btn @click="newItem" class="mb-5" icon large color="primary">
-      <v-icon>mdi-plus</v-icon>
-    </v-btn>
+        <app-table
+          :items="items"
+          :headers="headers"
+          :actions="actions"
+          :page="pagination.page"
+          :limit="pagination.limit"
+          :total="pagination.total"
+          @change-page="changePage"
+        >
+        </app-table>
 
-    <app-table
-      :items="items"
-      :headers="headers"
-      :actions="actions"
-      :page="pagination.page"
-      :limit="pagination.limit"
-      :total="pagination.total"
-      @change-page="changePage"
-    >
-    </app-table>
-
-    <app-dialog
-      v-model="form.dialog"
-      title="Customer"
-      @confirm="confirmDialog"
-      @cancel="cancelDialog"
-      no-padding
-    >
-      <template slot="content">
-        <customer-form v-if="itemSelected" ref="form" v-model="itemSelected">
-        </customer-form>
-      </template>
-    </app-dialog>
+        <app-dialog
+          v-model="form.dialog"
+          title="Customer"
+          @confirm="confirmDialog"
+          @cancel="cancelDialog"
+          no-padding
+        >
+          <template slot="content">
+            <customer-form
+              v-if="itemSelected"
+              ref="form"
+              v-model="itemSelected"
+            >
+            </customer-form>
+          </template>
+        </app-dialog>
+      </div>
+    </div>
   </div>
 </template>
 

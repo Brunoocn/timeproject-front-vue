@@ -11,6 +11,7 @@ import TimeSheetPage from "../views/TimeSheetPage.vue";
 import NotFound from "../views/NotFound.vue";
 import UserPage from "../views/UserPage.vue";
 import NotAuthorizedPage from "../views/NotAuthorizedPage.vue";
+import authService from "../services/authService";
 
 Vue.use(VueRouter);
 
@@ -104,6 +105,17 @@ const router = new VueRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+  if (
+    to.name !== "LoginPage" &&
+    to.name !== "NotAuthorized" &&
+    to.name !== "RegisterPage"
+  ) {
+    const userparams = await authService.getUserParams();
+    if (userparams === null) {
+      next({ name: "NotAuthorized" });
+      return;
+    }
+  }
   if (to.meta && to.meta.role) {
     const role = to.meta.role;
     const allow = Vue.prototype.$gates.hasAnyRole(role);

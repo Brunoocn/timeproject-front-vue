@@ -8,7 +8,6 @@ import store from "./stores/store";
 import apiClient from "./api/apiClient";
 import AppDialog from "./components/dialogs/AppDialog.vue";
 import AppTable from "./components/tables/AppTable.vue";
-import AppTitle from "./components/texts/AppTitle.vue";
 import AppDialogConfirm from "./components/dialogs/AppDialogConfirm.vue";
 import AppAlert from "./components/alerts/AppAlert.vue";
 import DateInput from "./components/dates/DateInput.vue";
@@ -32,7 +31,6 @@ Vue.prototype.$http = apiClient;
 
 Vue.component("app-dialog", AppDialog);
 Vue.component("app-table", AppTable);
-Vue.component("app-title", AppTitle);
 Vue.component("app-alert", AppAlert);
 Vue.component("date-input", DateInput);
 

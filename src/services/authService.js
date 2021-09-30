@@ -15,6 +15,7 @@ export default {
     }
     return false;
   },
+
   async getUserParams() {
     return await Vue.prototype.$getItem("userparams");
   },
@@ -43,4 +44,9 @@ export default {
       return false;
     }
   },
+
+  async signOut(){
+    localStorage.clear()
+    await Vue.prototype.$removeItem("userparams");
+  }
 };
